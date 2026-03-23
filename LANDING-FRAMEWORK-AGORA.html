@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Framework Agora | Landing de Publicacao</title>
+    <meta
+      name="description"
+      content="Landing page oficial do Framework Agora: desenvolvimento em parceria com AI com foco em velocidade, FinOps de tokens, seguranca, governanca e monitoramento."
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap");
+
+      :root {
+        --paper: #f7f4ec;
+        --paper-2: #fffaf1;
+        --ink: #14252b;
+        --muted: #4c666c;
+        --line: #d8d0c0;
+        --teal: #108d80;
+        --teal-2: #0d6f65;
+        --orange: #ea8b43;
+        --orange-2: #cf6e2c;
+        --mint: #d7efe6;
+        --radius-xl: 26px;
+        --radius-md: 16px;
+        --shadow: 0 26px 48px rgba(20, 37, 43, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        color: var(--ink);
+        background: linear-gradient(180deg, var(--paper), var(--paper-2));
+        font-family:
+          "Bricolage Grotesque", "Avenir Next", "Trebuchet MS", sans-serif;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.5;
+        background:
+          radial-gradient(
+            circle at 85% 12%,
+            rgba(16, 141, 128, 0.14),
+            transparent 34%
+          ),
+          radial-gradient(
+            circle at 18% 80%,
+            rgba(234, 139, 67, 0.16),
+            transparent 32%
+          ),
+          repeating-linear-gradient(
+            45deg,
+            rgba(20, 37, 43, 0.025),
+            rgba(20, 37, 43, 0.025) 1px,
+            transparent 1px,
+            transparent 12px
+          );
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .wrap {
+        position: relative;
+        z-index: 1;
+        width: min(1200px, 92vw);
+        margin: 0 auto;
+      }
+
+      .hero {
+        padding: 48px 0 30px;
+      }
+
+      .topline {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border: 1px solid #b6dbd3;
+        background: #e6f8f3;
+        color: #0f6a60;
+        border-radius: 999px;
+        padding: 8px 12px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin: 0;
+      }
+
+      h1 {
+        margin-top: 16px;
+        max-width: 18ch;
+        font-family: "Fraunces", Georgia, serif;
+        font-size: clamp(2rem, 4.7vw, 4rem);
+        line-height: 1.02;
+      }
+
+      .subtitle {
+        margin-top: 14px;
+        max-width: 65ch;
+        color: var(--muted);
+        font-size: 1.04rem;
+      }
+
+      .hero-actions {
+        margin-top: 22px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border-radius: 999px;
+        padding: 12px 18px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        color: #fff;
+        background: linear-gradient(135deg, var(--teal), var(--teal-2));
+        box-shadow: 0 12px 26px rgba(16, 141, 128, 0.34);
+      }
+
+      .btn-secondary {
+        color: #7a451f;
+        background: linear-gradient(135deg, #ffd6b7, #ffc28f);
+        border: 1px solid #e8a36a;
+        box-shadow: 0 10px 22px rgba(234, 139, 67, 0.28);
+      }
+
+      .hero-grid {
+        margin-top: 26px;
+        display: grid;
+        grid-template-columns: 1.3fr 1fr;
+        gap: 14px;
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: var(--radius-xl);
+        background: rgba(255, 255, 255, 0.77);
+        box-shadow: var(--shadow);
+        padding: 18px;
+      }
+
+      .panel h3 {
+        margin-bottom: 8px;
+        font-size: 1.08rem;
+      }
+
+      .panel ul {
+        margin: 8px 0 0;
+        padding-left: 20px;
+      }
+
+      .panel li {
+        margin-bottom: 6px;
+        color: #27414a;
+      }
+
+      section {
+        margin: 18px 0;
+      }
+
+      .section-title {
+        margin-bottom: 10px;
+        font-size: clamp(1.25rem, 2.4vw, 1.9rem);
+        font-family: "Fraunces", Georgia, serif;
+      }
+
+      .section-sub {
+        margin: 0 0 12px;
+        color: var(--muted);
+      }
+
+      .pillars {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .pillar {
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 14px;
+        background: #fff;
+        min-height: 148px;
+      }
+
+      .pillar h4 {
+        margin: 0 0 8px;
+        font-size: 1rem;
+      }
+
+      .pillar p {
+        margin: 0;
+        color: #3f5f66;
+        font-size: 0.95rem;
+      }
+
+      .roadmap {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .road-item {
+        border: 1px solid #cde2dc;
+        background: #f7fffc;
+        border-radius: var(--radius-md);
+        padding: 14px;
+      }
+
+      .road-item h4 {
+        margin-bottom: 8px;
+        color: #0e6d64;
+      }
+
+      .downloads {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .download-card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        background: #fff;
+        padding: 14px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .download-card h4 {
+        margin: 0;
+        font-size: 1rem;
+      }
+
+      .download-card p {
+        margin: 0;
+        color: #3f5f66;
+        font-size: 0.94rem;
+      }
+
+      .download-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #9cc9bf;
+        color: #0f6f63;
+        background: var(--mint);
+        border-radius: 999px;
+        padding: 7px 12px;
+        font-size: 0.84rem;
+        font-weight: 700;
+      }
+
+      .cta-band {
+        border: 1px solid #ddb391;
+        border-radius: var(--radius-xl);
+        background: linear-gradient(120deg, #fff6eb, #fff2e1);
+        padding: 18px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .cta-band h3 {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 1.35rem;
+      }
+
+      .cta-band p {
+        margin: 6px 0 0;
+        color: #704427;
+        max-width: 62ch;
+      }
+
+      footer {
+        margin-top: 18px;
+        padding: 24px 0 44px;
+        color: #546c72;
+        border-top: 1px solid #d8d0c0;
+        font-size: 0.9rem;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(14px);
+        animation: rise 0.65s ease forwards;
+      }
+
+      .reveal.delay-1 {
+        animation-delay: 0.08s;
+      }
+
+      .reveal.delay-2 {
+        animation-delay: 0.16s;
+      }
+
+      .reveal.delay-3 {
+        animation-delay: 0.24s;
+      }
+
+      @keyframes rise {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 980px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .pillars {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .downloads {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .wrap {
+          width: min(1200px, 94vw);
+        }
+
+        .pillars,
+        .roadmap {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          padding-top: 32px;
+        }
+
+        .btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="hero reveal">
+        <span class="topline">Framework Agora · Publicacao Oficial</span>
+        <h1>Desenvolvimento com AI sem perder previsibilidade e controle</h1>
+        <p class="subtitle">
+          Uma base praticavel para times de engenharia escalar parceria com AI
+          por cinco pilares: velocidade, FinOps de tokens, seguranca, governanca
+          e monitoramento.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="FRAMEWORK-DEV-AI-FINOPS.html"
+            >Abrir Framework Web</a
+          >
+          <a class="btn btn-secondary" href="#downloads">Ver Kit de Download</a>
+        </div>
+
+        <div class="hero-grid">
+          <article class="panel reveal delay-1">
+            <h3>Para quem</h3>
+            <ul>
+              <li>Liderancas de engenharia, produto e plataforma</li>
+              <li>Tech leads e squads de desenvolvimento</li>
+              <li>Times de seguranca, FinOps e operacao</li>
+            </ul>
+          </article>
+          <article class="panel reveal delay-2">
+            <h3>Resultado esperado</h3>
+            <ul>
+              <li>Mais throughput com menor retrabalho</li>
+              <li>Custo de tokens sob disciplina financeira</li>
+              <li>Risco tecnico e de seguranca reduzido</li>
+            </ul>
+          </article>
+        </div>
+      </header>
+
+      <section class="reveal delay-1" id="pilares">
+        <h2 class="section-title">Os 5 pilares operacionais</h2>
+        <p class="section-sub">
+          Estrutura orientada para adocao real, com dono, metrica e evidencia em
+          cada etapa.
+        </p>
+        <div class="pillars">
+          <article class="pillar">
+            <h4>Velocidade</h4>
+            <p>
+              Ciclos curtos, escopo claro, validacao continua e menos
+              retrabalho.
+            </p>
+          </article>
+          <article class="pillar">
+            <h4>FinOps de Tokens</h4>
+            <p>
+              Budget, guardrails por fluxo e custo por entrega como KPI central.
+            </p>
+          </article>
+          <article class="pillar">
+            <h4>Seguranca</h4>
+            <p>
+              Classificacao de dados, zero segredo em prompt e validacao de
+              output.
+            </p>
+          </article>
+          <article class="pillar">
+            <h4>Governanca</h4>
+            <p>
+              Padrao de sprint, evidencias, rastreabilidade de decisao e status.
+            </p>
+          </article>
+          <article class="pillar">
+            <h4>Visibilidade e Monitoramento</h4>
+            <p>
+              Custo, latencia, falha, aceite de output e alertas operacionais.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="reveal delay-2" id="roadmap">
+        <h2 class="section-title">Plano de implantacao 30-60-90</h2>
+        <div class="roadmap">
+          <article class="road-item">
+            <h4>30 dias</h4>
+            <ul>
+              <li>Definir owners por pilar</li>
+              <li>Ativar budget por time</li>
+              <li>Padronizar estrutura de sprint</li>
+            </ul>
+          </article>
+          <article class="road-item">
+            <h4>60 dias</h4>
+            <ul>
+              <li>Conectar custo com throughput</li>
+              <li>Formalizar gates de seguranca</li>
+              <li>Ritual quinzenal de metricas</li>
+            </ul>
+          </article>
+          <article class="road-item">
+            <h4>90 dias</h4>
+            <ul>
+              <li>Benchmark entre squads</li>
+              <li>Alertas automativos de anomalia</li>
+              <li>Relatorio executivo mensal</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="reveal delay-3" id="downloads">
+        <h2 class="section-title">Kit de download</h2>
+        <p class="section-sub">
+          Materiais prontos para adocao interna, publicacao e palestras.
+        </p>
+        <div class="downloads">
+          <article class="download-card">
+            <h4>Framework completo (Markdown)</h4>
+            <p>Versao fonte para ajustes, forks e adaptacao por time.</p>
+            <div class="download-actions">
+              <a class="chip" href="FRAMEWORK-DEV-AI-FINOPS.md" download
+                >Baixar .md</a
+              >
+              <a class="chip" href="FRAMEWORK-DEV-AI-FINOPS.md">Abrir</a>
+            </div>
+          </article>
+
+          <article class="download-card">
+            <h4>Framework completo (Web)</h4>
+            <p>
+              Versao pronta para leitura online e compartilhamento imediato.
+            </p>
+            <div class="download-actions">
+              <a class="chip" href="FRAMEWORK-DEV-AI-FINOPS.html" download
+                >Baixar .html</a
+              >
+              <a class="chip" href="FRAMEWORK-DEV-AI-FINOPS.html">Abrir</a>
+            </div>
+          </article>
+
+          <article class="download-card">
+            <h4>Slides Marp/Reveal</h4>
+            <p>Deck em Markdown pronto para palestra de 30-45 minutos.</p>
+            <div class="download-actions">
+              <a
+                class="chip"
+                href="SLIDES-FRAMEWORK-AGORA-MARP-REVEAL.md"
+                download
+                >Baixar slides</a
+              >
+              <a class="chip" href="SLIDES-FRAMEWORK-AGORA-MARP-REVEAL.md"
+                >Abrir</a
+              >
+            </div>
+          </article>
+
+          <article class="download-card">
+            <h4>Roteiro de palestra (30-45 min)</h4>
+            <p>Roteiro narrativo com timing, storytelling e Q&A.</p>
+            <div class="download-actions">
+              <a
+                class="chip"
+                href="ROTEIRO-PALESTRA-FRAMEWORK-AGORA-30-45MIN.md"
+                download
+                >Baixar roteiro</a
+              >
+              <a
+                class="chip"
+                href="ROTEIRO-PALESTRA-FRAMEWORK-AGORA-30-45MIN.md"
+                >Abrir</a
+              >
+            </div>
+          </article>
+
+          <article class="download-card">
+            <h4>One-pager executivo</h4>
+            <p>
+              Versao de 1 pagina para conselho e diretoria com foco em decisao.
+            </p>
+            <div class="download-actions">
+              <a class="chip" href="ONE-PAGER-EXECUTIVO-CONSELHO-AI.md" download
+                >Baixar one-pager</a
+              >
+              <a class="chip" href="ONE-PAGER-EXECUTIVO-CONSELHO-AI.md"
+                >Abrir</a
+              >
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="cta-band reveal delay-3" id="cta">
+        <div>
+          <h3>Transforme uso de AI em capacidade institucional</h3>
+          <p>
+            Se sua organizacao ja usa AI no dia a dia, o proximo salto nao e
+            gerar mais codigo: e reduzir incerteza, custo oculto e risco
+            operacional com um modelo replicavel.
+          </p>
+        </div>
+        <a class="btn btn-primary" href="FRAMEWORK-DEV-AI-FINOPS.html"
+          >Comecar agora</a
+        >
+      </section>
+
+      <footer>
+        Framework Agora · Landing oficial para publicacao e distribuicao de
+        materiais.
+      </footer>
+    </div>
+  </body>
+</html>

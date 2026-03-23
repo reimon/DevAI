@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Framework Agora - Desenvolvimento em Parceria com AI</title>
+    <meta
+      name="description"
+      content="Framework detalhado para desenvolvimento em parceria com AI com cinco pilares: velocidade, FinOps de tokens, seguranca, governanca, visibilidade e monitoramento."
+    />
+    <style>
+      :root {
+        --bg-1: #0a1f1a;
+        --bg-2: #102a25;
+        --bg-3: #0b1715;
+        --card: #10241f;
+        --text: #eef7f4;
+        --muted: #b9d1c9;
+        --line: #2f4d44;
+        --accent: #20d3a5;
+        --accent-2: #ffbe55;
+        --danger: #ff7a7a;
+        --ok: #74f0b9;
+        --shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        color: var(--text);
+        background:
+          radial-gradient(1200px 600px at 5% 0%, #173931 0%, transparent 55%),
+          radial-gradient(1000px 600px at 95% 10%, #1a2a4a 0%, transparent 45%),
+          linear-gradient(180deg, var(--bg-1), var(--bg-2) 40%, var(--bg-3));
+        font-family: "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif;
+        line-height: 1.55;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .container {
+        width: min(1160px, 92vw);
+        margin: 0 auto;
+      }
+
+      .hero {
+        padding: 48px 0 30px;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #052b20;
+        background: linear-gradient(90deg, var(--accent), #98f2d6);
+        border-radius: 999px;
+        padding: 8px 12px;
+        font-weight: 700;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        margin: 0;
+        line-height: 1.2;
+      }
+
+      h1 {
+        margin-top: 16px;
+        font-size: clamp(1.9rem, 4vw, 3.2rem);
+        max-width: 18ch;
+      }
+
+      .subtitle {
+        margin-top: 14px;
+        color: var(--muted);
+        font-size: 1.05rem;
+        max-width: 76ch;
+      }
+
+      .pillars-inline {
+        margin-top: 16px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .pillars-inline span {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 7px 11px;
+        font-size: 0.86rem;
+        color: #d8efe8;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 240px 1fr;
+        gap: 24px;
+        padding: 24px 0 60px;
+      }
+
+      .toc {
+        position: sticky;
+        top: 14px;
+        align-self: start;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: rgba(16, 36, 31, 0.75);
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+        box-shadow: var(--shadow);
+        padding: 14px;
+      }
+
+      .toc h3 {
+        font-size: 0.95rem;
+        margin-bottom: 10px;
+        color: #d7efe7;
+      }
+
+      .toc a {
+        display: block;
+        font-size: 0.88rem;
+        padding: 6px 0;
+        color: #bde5d8;
+      }
+
+      .content section {
+        margin-bottom: 26px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.03),
+          rgba(0, 0, 0, 0.08)
+        );
+        box-shadow: var(--shadow);
+        padding: 20px;
+      }
+
+      .content h2 {
+        font-size: clamp(1.2rem, 2vw, 1.7rem);
+        margin-bottom: 14px;
+      }
+
+      .content h3 {
+        margin-top: 16px;
+        margin-bottom: 8px;
+        font-size: 1.05rem;
+      }
+
+      .content p {
+        margin: 0 0 10px;
+        color: #d7e9e3;
+      }
+
+      .content ul,
+      .content ol {
+        margin-top: 8px;
+        margin-bottom: 10px;
+        padding-left: 20px;
+      }
+
+      .content li {
+        margin-bottom: 6px;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 14px;
+        background: var(--card);
+      }
+
+      .full-span {
+        grid-column: 1 / -1;
+      }
+
+      .card h4 {
+        margin-bottom: 8px;
+        font-size: 0.98rem;
+      }
+
+      .kpi-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        overflow: hidden;
+      }
+
+      .kpi-table th,
+      .kpi-table td {
+        border: 1px solid var(--line);
+        padding: 10px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .kpi-table th {
+        background: #0f2f28;
+      }
+
+      .callout {
+        border-left: 4px solid var(--accent-2);
+        background: rgba(255, 190, 85, 0.09);
+        border-radius: 10px;
+        padding: 12px 14px;
+      }
+
+      .final-cta {
+        display: grid;
+        gap: 10px;
+        border: 1px solid #366355;
+        background: linear-gradient(
+          120deg,
+          rgba(32, 211, 165, 0.1),
+          rgba(255, 190, 85, 0.12)
+        );
+      }
+
+      .status-ok {
+        color: var(--ok);
+      }
+
+      .status-attn {
+        color: var(--accent-2);
+      }
+
+      .status-risk {
+        color: var(--danger);
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        color: #a6c4bc;
+        padding: 24px 0 44px;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 980px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .toc {
+          position: static;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .grid-2 {
+          grid-template-columns: 1fr;
+        }
+
+        .content section {
+          padding: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero container">
+      <span class="badge">Framework Agora · AI + Engenharia + FinOps</span>
+      <h1>
+        Desenvolvimento em parceria com AI com escala, seguranca e custo sob
+        controle
+      </h1>
+      <p class="subtitle">
+        Um framework detalhado para times de engenharia que querem acelerar
+        entrega sem perder governanca, proteger dados sensiveis e operar custo
+        de tokens com disciplina de FinOps.
+      </p>
+      <div class="pillars-inline">
+        <span>Velocidade</span>
+        <span>FinOps de Tokens</span>
+        <span>Seguranca</span>
+        <span>Governanca</span>
+        <span>Visibilidade e Monitoramento</span>
+      </div>
+    </header>
+
+    <main class="container layout">
+      <aside class="toc" aria-label="Navegacao">
+        <h3>Indice</h3>
+        <a href="#proposito">1. Proposito</a>
+        <a href="#principios">2. Principios</a>
+        <a href="#pilares">3. Pilares</a>
+        <a href="#operacao">4. Modelo Operacional</a>
+        <a href="#raci">5. RACI</a>
+        <a href="#maturidade">6. Maturidade</a>
+        <a href="#metricas">7. Metricas</a>
+        <a href="#checklists">8. Checklists 30-60-90</a>
+        <a href="#playbooks">9. Playbooks</a>
+        <a href="#palestras">10. Palestras</a>
+        <a href="#adocao">11. Adocao Imediata</a>
+      </aside>
+
+      <article class="content">
+        <section id="proposito">
+          <h2>1) Proposito</h2>
+          <p>
+            Este framework organiza o desenvolvimento em parceria com AI como
+            capacidade institucional, nao como improviso operacional. Ele foi
+            desenhado para gerar velocidade com qualidade, custo previsivel e
+            risco controlado.
+          </p>
+          <div class="callout">
+            Mensagem central: hoje, software e construido com AI no fluxo de
+            trabalho real. O diferencial competitivo esta em operar esse modelo
+            com metodo.
+          </div>
+        </section>
+
+        <section id="principios">
+          <h2>2) Principios Base</h2>
+          <ol>
+            <li>AI acelera, mas nao substitui responsabilidade tecnica.</li>
+            <li>Toda automacao sem observabilidade vira risco oculto.</li>
+            <li>Velocidade sem governanca gera retrabalho caro.</li>
+            <li>
+              Token e custo variavel de engenharia: precisa de meta, dono e
+              controle.
+            </li>
+            <li>Seguranca e requisito de arquitetura, nao etapa final.</li>
+            <li>Melhoria continua vence perfeccionismo inicial.</li>
+          </ol>
+        </section>
+
+        <section id="pilares">
+          <h2>3) Cinco Pilares Operacionais</h2>
+          <div class="grid-2">
+            <div class="card">
+              <h4>A) Velocidade de Desenvolvimento</h4>
+              <ul>
+                <li>Sprints curtas com escopo e fora de escopo explicitos.</li>
+                <li>Ciclos curtos de implementacao e validacao.</li>
+                <li>
+                  Templates padrao para sprint, PR e mudanca de arquitetura.
+                </li>
+                <li>Registro de decisoes no momento da execucao.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>B) FinOps de Tokens</h4>
+              <ul>
+                <li>Budget mensal por produto e por time.</li>
+                <li>Guardrails de tokens por tipo de tarefa.</li>
+                <li>Tiers de modelo conforme complexidade.</li>
+                <li>Contexto minimo e reuso por delta.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>C) Seguranca</h4>
+              <ul>
+                <li>Classificacao de dados antes do envio para modelo.</li>
+                <li>Zero segredo em prompt e log.</li>
+                <li>Validacao de output antes de producao.</li>
+                <li>Auditoria de prompts, decisoes e aprovacoes.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>D) Governanca</h4>
+              <ul>
+                <li>Estrutura unica de sprint para todo o ecossistema.</li>
+                <li>Status padronizado com criterios objetivos.</li>
+                <li>Evidencia obrigatoria por acao concluida.</li>
+                <li>Pendencias explicitadas para proxima sprint.</li>
+              </ul>
+            </div>
+            <div class="card full-span">
+              <h4>E) Visibilidade e Monitoramento</h4>
+              <ul>
+                <li>Custo, volume, latencia e falha por fluxo de AI.</li>
+                <li>Aceite de output, ajuste manual e descarte.</li>
+                <li>Alertas de consumo e regressao de qualidade.</li>
+                <li>
+                  Dashboard executivo com custo por entrega e risco de budget.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="operacao">
+          <h2>4) Modelo Operacional Ponta a Ponta</h2>
+          <ol>
+            <li>
+              <strong>Descoberta:</strong> objetivo, criterio de sucesso e risco
+              inicial.
+            </li>
+            <li>
+              <strong>Planejamento:</strong> sprint, budget de tokens, gate de
+              seguranca.
+            </li>
+            <li>
+              <strong>Execucao com AI:</strong> tarefas pequenas, contexto
+              minimo, deltas.
+            </li>
+            <li>
+              <strong>Validacao:</strong> testes, revisao humana e conformidade.
+            </li>
+            <li>
+              <strong>Publicacao:</strong> release com monitoramento ativo e
+              rollback pronto.
+            </li>
+            <li>
+              <strong>Aprendizado:</strong> consolidar ganhos/perdas e ajustar
+              padroes.
+            </li>
+          </ol>
+        </section>
+
+        <section id="raci">
+          <h2>5) RACI Recomendado</h2>
+          <div class="grid-2">
+            <div class="card">
+              <h4>Responsaveis tecnicos</h4>
+              <ul>
+                <li>
+                  Tech Lead: arquitetura, risco tecnico e gates de qualidade.
+                </li>
+                <li>Engenharia: implementacao, testes e evidencias.</li>
+                <li>Platform/DevOps: confiabilidade e observabilidade.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>Responsaveis de controle</h4>
+              <ul>
+                <li>Product: prioridade, impacto e valor.</li>
+                <li>Security Champion: controles de dados e ataque.</li>
+                <li>FinOps Owner: budget, custo por entrega e eficiencia.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="maturidade">
+          <h2>6) Maturidade do Framework</h2>
+          <ul>
+            <li>
+              <span class="status-risk">Nivel 1 - Ad hoc:</span> sem padrao, sem
+              budget, sem rastreabilidade.
+            </li>
+            <li>
+              <span class="status-attn">Nivel 2 - Repetivel:</span> template
+              minimo e controles iniciais.
+            </li>
+            <li>
+              <span class="status-attn">Nivel 3 - Gerenciado:</span> metricas
+              por sprint e gates formais.
+            </li>
+            <li>
+              <span class="status-ok">Nivel 4 - Otimizado:</span> melhoria
+              continua de custo e qualidade.
+            </li>
+            <li>
+              <span class="status-ok">Nivel 5 - Escalado:</span> operacao
+              multi-time com previsibilidade.
+            </li>
+          </ul>
+        </section>
+
+        <section id="metricas">
+          <h2>7) Catalogo de Metricas por Pilar</h2>
+          <table class="kpi-table">
+            <thead>
+              <tr>
+                <th>Pilar</th>
+                <th>Indicador</th>
+                <th>Meta inicial</th>
+                <th>Frequencia</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Velocidade</td>
+                <td>Lead time medio por entrega</td>
+                <td>-20% em 90 dias</td>
+                <td>Semanal</td>
+              </tr>
+              <tr>
+                <td>FinOps</td>
+                <td>Custo por entrega</td>
+                <td>-15% em 90 dias</td>
+                <td>Semanal</td>
+              </tr>
+              <tr>
+                <td>Seguranca</td>
+                <td>Incidentes relacionados a AI</td>
+                <td>Zero critico</td>
+                <td>Diario/Semanal</td>
+              </tr>
+              <tr>
+                <td>Governanca</td>
+                <td>Sprints com evidencia completa</td>
+                <td>95% ou mais</td>
+                <td>Semanal</td>
+              </tr>
+              <tr>
+                <td>Visibilidade</td>
+                <td>Cobertura de observabilidade AI</td>
+                <td>100% fluxos criticos</td>
+                <td>Semanal</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="checklists">
+          <h2>8) Checklists de Implantacao 30-60-90 dias</h2>
+          <div class="grid-2">
+            <div class="card">
+              <h4>30 dias</h4>
+              <ul>
+                <li>Definir donos por pilar.</li>
+                <li>Definir budget por time.</li>
+                <li>Publicar template unico de sprint.</li>
+                <li>Subir dashboard de custo e uso.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h4>60 dias</h4>
+              <ul>
+                <li>Conectar custo com throughput.</li>
+                <li>Formalizar gates de seguranca.</li>
+                <li>Ritual quinzenal de metricas.</li>
+                <li>Treinamento interno estruturado.</li>
+              </ul>
+            </div>
+            <div class="card full-span">
+              <h4>90 dias</h4>
+              <ul>
+                <li>Benchmark entre squads por custo x valor.</li>
+                <li>Alertas automativos de consumo anomalo.</li>
+                <li>Playbook de incidentes AI ativo.</li>
+                <li>Relatorio executivo mensal de maturidade.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section id="playbooks">
+          <h2>9) Playbooks Essenciais</h2>
+          <h3>Explosao de custo de tokens</h3>
+          <ol>
+            <li>Congelar fluxos nao criticos de alto consumo.</li>
+            <li>Identificar top consumidores em 24h.</li>
+            <li>Aplicar limite de contexto e tier mais economico.</li>
+            <li>Revalidar custo por entrega em 7 dias.</li>
+          </ol>
+          <h3>Queda de qualidade de output</h3>
+          <ol>
+            <li>Revisar prompt, contexto e fontes de recuperacao.</li>
+            <li>Rodar regressao focada nos fluxos afetados.</li>
+            <li>Ajustar validadores de saida.</li>
+            <li>Retomar rollout gradativo com monitoramento reforcado.</li>
+          </ol>
+          <h3>Incidente de seguranca envolvendo AI</h3>
+          <ol>
+            <li>Conter canal, remover contexto sensivel e bloquear fluxo.</li>
+            <li>Rotacionar segredos e credenciais relacionadas.</li>
+            <li>Executar analise de impacto com trilha de auditoria.</li>
+            <li>Publicar RCA com acao preventiva e prazo de verificacao.</li>
+          </ol>
+        </section>
+
+        <section id="palestras">
+          <h2>10) Estrutura de Comunicacao para Palestras</h2>
+          <ol>
+            <li>Contexto: por que o agora e parceria com AI.</li>
+            <li>Problema: velocidade sem controle gera custo e risco.</li>
+            <li>Solucao: cinco pilares com governanca operacional.</li>
+            <li>Evidencia: metricas antes/depois e casos reais.</li>
+            <li>Acao: roteiro de implantacao 30-60-90 dias.</li>
+          </ol>
+          <div class="callout">
+            Frases-chave: AI sem FinOps vira custo invisivel. AI sem seguranca
+            vira risco silencioso. AI com governanca e visibilidade vira
+            vantagem competitiva.
+          </div>
+        </section>
+
+        <section id="adocao" class="final-cta">
+          <h2>11) Adocao Imediata</h2>
+          <p>
+            Comece com governanca basica e medicao de custo por sprint. Depois
+            evolua para instrumentacao completa, automacao de alertas e melhoria
+            continua por maturidade.
+          </p>
+          <ol>
+            <li>Padronize sprints e evidencias no manifesto.</li>
+            <li>Meça custo de AI por tarefa e por entrega.</li>
+            <li>Ative dashboard de custo, qualidade e seguranca.</li>
+            <li>Revise metricas quinzenalmente e ajuste guardrails.</li>
+          </ol>
+          <p>
+            Referencia operacional no repositorio:
+            <a href="../docs/MANIFESTO-DEV-IA.md"
+              >../docs/MANIFESTO-DEV-IA.md</a
+            >
+            e
+            <a href="../docs/MEMORY.md">../docs/MEMORY.md</a>.
+          </p>
+        </section>
+      </article>
+    </main>
+
+    <footer>
+      <div class="container">
+        Framework Agora · Desenvolvimento em Parceria com AI · Versao web para
+        publicacao direta.
+      </div>
+    </footer>
+  </body>
+</html>
