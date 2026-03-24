@@ -17,7 +17,7 @@ Contém:
 ## Estrutura
 
 ```
-framework-agora/
+neural-flow-framework/
 ├── docs/
 │   ├── MANIFESTO-DEV-IA.md        # Regras obrigatorias
 │   ├── MEMORY.md                  # Template de memoria inicial

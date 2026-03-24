@@ -1,12 +1,12 @@
 # One-Pager Executivo
 
-## Framework Agora: Desenvolvimento em Parceria com AI
+## Neural-Flow-Framework: Desenvolvimento em Parceria com AI
 
 ## Resumo Executivo
 
 A engenharia com AI ja virou realidade operacional. O desafio estrategico nao e adotar AI, e operar AI com previsibilidade de custo, controle de risco e ganho sustentavel de produtividade.
 
-O Framework Agora propoe um modelo pratico de governanca em cinco pilares:
+O Neural-Flow-Framework propoe um modelo pratico de governanca em cinco pilares:
 
 - Velocidade de entrega com qualidade.
 - FinOps de tokens para controle de custo variavel.
@@ -83,7 +83,7 @@ Metas iniciais sugeridas em 90 dias:
 
 ## Decisoes Solicitadas ao Conselho
 
-1. Aprovar o Framework Agora como padrao corporativo para engenharia com AI.
+1. Aprovar o Neural-Flow-Framework como padrao corporativo para engenharia com AI.
 2. Designar sponsors executivos para Engenharia, FinOps e Seguranca.
 3. Aprovar metas de 90 dias e ciclo de revisao mensal de indicadores.
 4. Autorizar piloto imediato em um produto estrategico.

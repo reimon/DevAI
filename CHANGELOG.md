@@ -17,7 +17,7 @@ Histórico de principais atualizações e versões do manifesto de governança.
 ### Estrutura Inicial
 
 ```
-framework-agora/
+neural-flow-framework/
 ├── docs/
 │   ├── MANIFESTO-DEV-IA.md       (130 linhas)
 │   ├── MEMORY.md                 (template)

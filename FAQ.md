@@ -91,7 +91,7 @@ du -sh docs/*
 cp governance-template/docs/MANIFESTO-DEV-IA.md seu-projeto/docs/
 
 # Opção 2: Usar git subtree
-git subtree pull --prefix=framework-agora governance-template main
+git subtree pull --prefix=neural-flow-framework governance-template main
 
 # Opção 3: Usar symlink (para arquivo único)
 ln -s /central/MANIFESTO-DEV-IA.md seu-projeto/docs/

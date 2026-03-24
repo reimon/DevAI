@@ -3,11 +3,11 @@ marp: true
 theme: default
 paginate: true
 size: 16:9
-title: Framework Agora - Desenvolvimento em Parceria com AI
+title: Neural-Flow-Framework - Desenvolvimento em Parceria com AI
 description: Velocidade, FinOps de tokens, seguranca, governanca e monitoramento para escalar engenharia com AI.
 -->
 
-# Framework Agora
+# Neural-Flow-Framework
 
 ## Desenvolvimento em Parceria com AI
 
@@ -21,7 +21,7 @@ Velocidade com controle de custo, risco e qualidade.
 
 1. O agora da engenharia com AI
 2. O problema que quase ninguem mede
-3. Os 5 pilares do Framework Agora
+3. Os 5 pilares do Neural-Flow-Framework
 4. Modelo operacional ponta a ponta
 5. Plano 30-60-90 dias
 6. KPIs executivos e CTA
@@ -345,15 +345,15 @@ Publique a primeira curva de aprendizado com:
 
 # Materiais de Apoio
 
-- FRAMEWORK-DEV-AI-FINOPS.md
-- FRAMEWORK-DEV-AI-FINOPS.html
-- ROTEIRO-PALESTRA-FRAMEWORK-AGORA-30-45MIN.md
+- NEURAL-FLOW-FRAMEWORK-FINOPS.md
+- NEURAL-FLOW-FRAMEWORK-FINOPS.html
+- ROTEIRO-PALESTRA-NEURAL-FLOW-FRAMEWORK-30-45MIN.md
 - ONE-PAGER-EXECUTIVO-CONSELHO-AI.md
 
 ---
 
 # Obrigado
 
-Framework Agora
+Neural-Flow-Framework
 
 Desenvolvimento em parceria com AI com escala, seguranca e FinOps.

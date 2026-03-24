@@ -1,4 +1,4 @@
-# Roteiro de Palestra - Framework Agora (30-45 min)
+# Roteiro de Palestra - Neural-Flow-Framework (30-45 min)
 
 ## 1) Objetivo da palestra
 
@@ -248,8 +248,8 @@ R: Definir owners por pilar, ativar budget de tokens por time e padronizar sprin
 
 ## 9) Material de apoio para divulgar depois da palestra
 
-- Framework completo em markdown: [FRAMEWORK-DEV-AI-FINOPS.md](FRAMEWORK-DEV-AI-FINOPS.md)
-- Versao web para publicacao direta: [FRAMEWORK-DEV-AI-FINOPS.html](FRAMEWORK-DEV-AI-FINOPS.html)
+- Framework completo em markdown: [NEURAL-FLOW-FRAMEWORK-FINOPS.md](NEURAL-FLOW-FRAMEWORK-FINOPS.md)
+- Versao web para publicacao direta: [NEURAL-FLOW-FRAMEWORK-FINOPS.html](NEURAL-FLOW-FRAMEWORK-FINOPS.html)
 - Diretriz operacional do repositorio: [../docs/MANIFESTO-DEV-IA.md](../docs/MANIFESTO-DEV-IA.md)
 
 ## 10) Checklist de preparacao do palestrante
